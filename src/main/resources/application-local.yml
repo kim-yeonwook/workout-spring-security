@@ -1,0 +1,52 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/test2;MODE=MYSQL
+    username: sa
+    password:
+
+#  sql:
+#    init:
+#      mode: always
+#      data-locations: classpath:database/dml.sql
+#      schema-locations: classpath:database/ddl.sql
+
+  jpa:
+    show-sql: true
+    generate-ddl: false
+
+    hibernate:
+      ddl-auto: validate
+
+    properties:
+      hibernate:
+        diarect: org.hibernate.dialect.H2Dialect
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+        id:
+          new_generator_mappings: false
+#    defer-datasource-initialization: true
+
+logging:
+  level:
+    root: debug
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
+
+jwt:
+  secret_key: "aGVsbG8gd29ybGQgbXkgbmFtZSBpcyBzc29uZyBoYWhhaGFoYWhhaGFoYSBydXJ1cnVydXJ1cnVydXJ1ZHNmc2Rmc2Rmc2Rmc2EK"
+  expired_access_token: 6000000
+  expired_refresh_token: 6000000
